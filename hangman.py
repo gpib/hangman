@@ -11,7 +11,6 @@ chosen_word = word_list[random.randint(0, len(word_list)-1)]
 
 #TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
 mistery_word =""
-guess_word =""
 for character in range(0, len(chosen_word)):
     mistery_word += "_"
 print(mistery_word)
