@@ -1,6 +1,8 @@
 import random
-#Step 1
+import stage
 
+#Step 1
+lives = 6
 word_list = ["aardvark", "baboon", "camel"]
 
 #TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
@@ -14,7 +16,8 @@ mistery_word =""
 for character in range(0, len(chosen_word)):
     mistery_word += "_"
 print(mistery_word)
-while chosen_word != mistery_word:
+while chosen_word != mistery_word or lives != 0:
+    print(stage.stages[lives])
     guess = input("Guess a letter").lower()
     cnt = -1
     for letter in chosen_word:
@@ -23,4 +26,9 @@ while chosen_word != mistery_word:
             print(f"Current letter {letter} and current guess {guess}")
             mistery_word = mistery_word[:cnt] + letter + mistery_word[cnt+1:]
             print(mistery_word)
+        else:
+            lives-= 1
+            break
+
     print(mistery_word)
+

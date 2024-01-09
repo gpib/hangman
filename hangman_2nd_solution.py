@@ -1,4 +1,5 @@
 import random
+import stage
 #Step 1
 
 word_list = ["aardvark", "baboon", "camel"]
@@ -13,21 +14,29 @@ print(f"Here is the chosen word: {chosen_word} \n"
 
 #TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
 
-
+lives = 6
 #TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
 end_of_the_game = False
-while not end_of_the_game:
+while not end_of_the_game or lives > 0:
     print(f"Chosen word {chosen_word} \n"
           f"guess word {hidden_chosen_word}")
     guess = input("Guess a letter").lower()
     for position in range(len(chosen_word)):
         if chosen_word[position] == guess:
             hidden_chosen_word[position] = chosen_word[position]
-
+        else:
+            if position == len(chosen_word):
+                print("Missed!")
+    if guess not in ' '.join(chosen_word):
+        print(stage.stages[lives])
+        lives -= 1
     print(hidden_chosen_word)
     if "_" not in hidden_chosen_word:
         end_of_the_game = True
-
+if lives == 0:
+    print("Game over")
+else:
+    print("You won!")
 
 """ old version
 mistery_word =""
